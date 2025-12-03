@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.trs_lab4_1.controller.ProductsController">
+
+    <top>
+        <VBox spacing="8" BorderPane.alignment="CENTER">
+            <fx:include source="header.fxml"/>
+
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Блок 1: чекбоксы параметров + Delete -->
+            <TitledPane text="Видалити продукти за параметрами" expanded="true">
+                <content>
+                    <VBox spacing="4">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <children>
+                            <!-- сюда из контроллера будем динамически добавлять CheckBox'ы -->
+                            <VBox fx:id="parametersBox">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+                            </VBox>
+                            <Button text="Delete" onAction="#onDeleteByParameters"/>
+                        </children>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <!-- Блок 2: продукти по групі -->
+            <!-- Блок 2: продукти по групі -->
+            <TitledPane text="Продукти за групою" expanded="false">
+                <content>
+                    <HBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <children>
+                            <Label text="Група:"/>
+                            <ComboBox fx:id="productGroupCombo" prefWidth="250"/>
+                            <Button text="get by pg" onAction="#onFilterByProductGroup"/>
+                        </children>
+                    </HBox>
+                </content>
+            </TitledPane>
+
+            <!-- Блок 3: продукти без параметра -->
+            <TitledPane text="Продукти без параметра" expanded="false">
+                <content>
+                    <HBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <children>
+                            <Label text="Параметр:"/>
+                            <ComboBox fx:id="parameterCombo" prefWidth="250"/>
+                            <Button text="Get" onAction="#onFilterWithoutParameter"/>
+                        </children>
+                    </HBox>
+                </content>
+            </TitledPane>
+        </VBox>
+    </top>
+
+    <!-- Центр: таблица products -->
+    <center>
+        <TableView fx:id="productsTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="nameColumn" text="Назва" prefWidth="150"/>
+                <TableColumn fx:id="descriptionColumn" text="Опис" prefWidth="200"/>
+                <TableColumn fx:id="releaseDateColumn" text="Дата випуску" prefWidth="120"/>
+                <TableColumn fx:id="groupColumn" text="Група" prefWidth="150"/>
+                <TableColumn fx:id="actionsColumn" text="actions" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Низ: якщо продукти відсутні -->
+    <bottom>
+        <Label fx:id="emptyLabel"
+               text="Немає продуктів, що задовольняють умову."
+               visible="false"
+               BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="5" bottom="10"/>
+            </padding>
+        </Label>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.trs_lab4_1.controller.ParameterController">
+
+    <!-- Верхняя панель: выбор группы + кнопка -->
+    <top>
+        <VBox>
+            <fx:include source="header.fxml"/>
+            <HBox spacing="10" BorderPane.alignment="CENTER">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <children>
+                    <Label text="Група:"/>
+                    <ComboBox fx:id="groupComboBox" prefWidth="250"/>
+                    <Button text="get by pg" onAction="#onSearch"/>
+                </children>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Центр: таблица параметров -->
+    <center>
+        <TableView fx:id="parameterTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="nameColumn" text="Назва" prefWidth="150"/>
+                <TableColumn fx:id="unitColumn" text="Одиниця вимірювання" prefWidth="150"/>
+                <TableColumn fx:id="groupColumn" text="Група" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Низ: сообщение, если ничего нет -->
+    <bottom>
+        <Label fx:id="emptyLabel"
+               text="Немає продуктів, що задовольняють умову."
+               visible="false"
+               BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="5" bottom="10"/>
+            </padding>
+        </Label>
+    </bottom>
+
+</BorderPane>

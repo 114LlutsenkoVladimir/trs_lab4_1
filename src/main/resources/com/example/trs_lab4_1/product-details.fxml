@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.trs_lab4_1.controller.ProductDetailsController"
+      spacing="10">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Заголовок -->
+    <Label text="Інформація про продукт"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <!-- Блок с Label-ами по продукту -->
+    <GridPane hgap="10" vgap="5">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <children>
+            <Label text="ID продукту:"           GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="productIdLabel"        GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Назва:"                 GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="productNameLabel"      GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Опис:"                  GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="productDescriptionLabel"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="ID групи:"              GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="productGroupIdLabel"   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Група:"                 GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="productGroupNameLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        </children>
+    </GridPane>
+
+    <!-- Заголовок таблицы параметров -->
+    <Label text="Параметри продукту"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <!-- Таблица параметров -->
+    <TableView fx:id="paramsTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="paramIdColumn"    text="ID параметра"      prefWidth="100"/>
+            <TableColumn fx:id="paramNameColumn"  text="Назва параметра"   prefWidth="150"/>
+            <TableColumn fx:id="paramUnitColumn"  text="Одиниця виміру"    prefWidth="150"/>
+            <TableColumn fx:id="paramValueColumn" text="Значення"          prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

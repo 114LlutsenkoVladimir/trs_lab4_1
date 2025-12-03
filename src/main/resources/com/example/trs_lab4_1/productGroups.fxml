@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.trs_lab4_1.controller.ProductGroupController">
+
+    <!-- Верх: три ComboBox + кнопка -->
+    <top>
+
+        <VBox spacing="5" BorderPane.alignment="CENTER">
+            <fx:include source="header.fxml"/>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <HBox spacing="10">
+                    <children>
+                        <Label text="З групи:"/>
+                        <ComboBox fx:id="fromGroupCombo" prefWidth="250"/>
+                        <Label text="У групу:"/>
+                        <ComboBox fx:id="toGroupCombo" prefWidth="250"/>
+                    </children>
+                </HBox>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label text="Група параметрів:"/>
+                        <ComboBox fx:id="parameterGroupCombo" prefWidth="250"/>
+                        <Button text="move" onAction="#onMove"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- Центр: таблица productGroups -->
+    <center>
+        <TableView fx:id="productGroupTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="nameColumn" text="Назва" prefWidth="200"/>
+                <TableColumn fx:id="paramGroupsColumn" text="Група параметрів" prefWidth="300"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Низ: сообщение, когда нет данных -->
+    <bottom>
+        <Label fx:id="emptyLabel"
+               text="Немає продуктів, що задовольняють умову."
+               visible="false"
+               BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="5" bottom="10"/>
+            </padding>
+        </Label>
+    </bottom>
+
+</BorderPane>
